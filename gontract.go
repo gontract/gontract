@@ -27,7 +27,7 @@ func (k Kind) String() string {
 
 func Condition(predicate bool, kind Kind, msg string) {
 	if !predicate {
-		message := fmt.Sprintf("%s (%v) not satisfied - software bug!?", kind, msg)
+		message := fmt.Sprintf("%s not satisfied (%v) - software bug!?", kind, msg)
 		panic(message)
 
 	}
