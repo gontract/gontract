@@ -6,9 +6,16 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func checkCondition(predicate bool, kind Kind, msg string) (ret error) {
+func checkCondition(predicate bool, kind Kind, msg string) (ret string) {
+	ret = "foo"
+	defer func() {
+		if r := recover(); r != nil {
+			ret = r.(string)
+		}
+	}()
 
-	return nil
+	Condition(predicate, kind, msg)
+	return ret
 
 }
 
@@ -17,16 +24,16 @@ func TestCondition(t *testing.T) {
 		predicate bool
 		kind      Kind
 		msg       string
-		expected  interface{}
+		expected  string
 	}{
-		{true, KindPre, "trivially true", nil},
-		{false, KindPost, "trivially false", "xx"},
+		{true, KindPre, "trivially true", "precondition not satisfied(trivially false) - software bug!?"},
+		{false, KindPost, "trivially false", "postcondition not satisfied (trivially false) - software bug!?"},
 	}
 
 	for _, c := range cases {
 
 		ret := checkCondition(c.predicate, c.kind, c.msg)
-		assert.Equal(t, ret, c.expected)
+		assert.Equal(t, c.expected, ret)
 
 	}
 
