@@ -37,7 +37,7 @@ gontract implements conditions in an assertion-like manner using `panic()`.
 
 The implementation of gontract was partly inspired by
 
-(stone.code/assert)[https://pkg.go.dev/gitlab.com/stone.code/assert]
+https://pkg.go.dev/gitlab.com/stone.code/assert
 
 
 
