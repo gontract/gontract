@@ -10,22 +10,26 @@ DbC consists  mainly of three concepts:
  * postconditions
 * (class) invariants
 
-while class invariants are indeed specific to OOP,  pre- and postconditions
+while class invariants are indeed specific to OOP,  preconditions and postconditions
 apply more generally to routines (functions/methods):
 
 **preconditions** are conditions that are  usually  imposed  on  the input of a funcion (parameters/arguments) and they  have to be satisfied in order for the function to be executed at all. It is the caller's responsibiliy to make sure that preconditions are satisfied.
 
 **postconditions** are usually imposed on the result of a function  (return values)
 and they have to be satisfied in order for the function to complete regularly.
-It is the responsibility of the function to make sure postconditions are satisfied
+It is the responsibility of the function implementation  to make sure postconditions are satisfied
 if the function ran, i. e. if it was provided with valid input.
 
 preconditions and ppostconditions form the essence of the **contract** between the
 contractor (the function) and the contractee (the caller of the function).
 
-Pre- and postconditions are essentially means for checking the input and result of a function, just a bit more intrinsically and idiomatically than with the usual conditional (if-else) constructs. -- if built into the programming language proper.
+Pre- and postconditions are essentially means for checking the input and result of a function, just a bit more intrinsically and idiomatically than with the usual conditional (if-else) 
+constructs. -- if built into the programming language proper.
 
-This description makes it plausible that the concept preconditions and postconditions are applicable to non-OOP languages as well.
+
+
+
+This description makes it plausible that the concept of preconditions and postconditions are applicable to non-OOP languages as well.
 
 This project offers mechanisms for writing  preconditions and postconditions in golang.
 
