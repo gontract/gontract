@@ -29,7 +29,7 @@ constructs. -- if built into the programming language proper.
 
 
 
-This description makes it plausible that the concept of preconditions and postconditions are applicable to non-OOP languages as well.
+The above  description should make it evident that the concept of preconditions and postconditions are applicable to non-OOP languages as well.
 
 This project offers mechanisms for writing  preconditions and postconditions in golang.
 
