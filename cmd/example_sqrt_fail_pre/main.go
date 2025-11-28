@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"math"
 
 	"github.com/obnoxxx/gontract"
@@ -23,12 +24,12 @@ func main() {
 
 	root := CalculateSqrt(num)
 
-	println("square root of %s is %s", num, root)
+	fmt.Printf("square root of %f is %f\n", num, root)
 
 	num = -1
 
 	root = CalculateSqrt(num)
 
-	println("square root of %s is %s", num, root)
+	fmt.Printf("square root of %f is %f\n", num, root)
 
 }
