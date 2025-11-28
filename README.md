@@ -3,7 +3,7 @@ design-by-contract-like pre- and postconditions  for golang
 
 ## Design by Contract
 
-Bertrand Meyer has introduced the  "design by contract" (DbC) paradigm for object oriented programming (OOP) along with his language Eiffel.
+Bertrand Meyer has introduced the  "Design by Contract" (DbC) paradigm for object oriented programming (OOP) along with his programming language Eiffel.
 
 DbC consists  mainly of three concepts:
 
@@ -16,7 +16,7 @@ apply more generally to routines (functions/methods):
 
 ## Preconditions and Postconditions
 
-**preconditions** are conditions that are  usually  imposed  on  the input of a funcion (parameters/arguments) and they  have to be satisfied in order for the function to be executed at all. It is the caller's responsibiliy to make sure that preconditions are satisfied.
+**preconditions** are conditions that are  typically  imposed  on  the input of a funcion (parameters/arguments) and they  have to be satisfied in order for the function to be executed at all. It is the caller's responsibiliy to make sure that preconditions are satisfied.
 
 **postconditions** are usually imposed on the result of a function  (return values)
 and they have to be satisfied in order for the function to complete regularly.
