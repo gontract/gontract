@@ -59,7 +59,7 @@ The implementation of gontract was partly inspired by
 
 [stone.code/assert](https://pkg.go.dev/gitlab.com/stone.code/assert)
 
-A couple of examples -- both positive and negative --  using this library are provided in this project:
+A couple of examples -- both positive and negative --  are provided to  illustrate how this library can be used:
 
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_success
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_fail_pre
