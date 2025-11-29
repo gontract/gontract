@@ -16,7 +16,7 @@ apply more generally to routines (functions/methods):
 
 ## Preconditions and Postconditions
 
-**preconditions** are conditions that are  typically  imposed  on  the input of a funcion (parameters/arguments) and they  have to be satisfied in order for the function to be executed at all. It is the caller's responsibiliy to make sure that preconditions are satisfied.
+**preconditions** are conditions that are  typically  imposed  on  the input of a funcion (parameters/arguments) and they  have to be satisfied in order for the function body to  run at all. It is the caller's responsibiliy to make sure that preconditions are satisfied.
 
 **postconditions** are usually imposed on the result of a function  (return values)
 and they have to be satisfied in order for the function to complete regularly.
