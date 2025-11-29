@@ -1,4 +1,4 @@
-# gontract
+hi# gontract
 design-by-contract-like pre- and postconditions  for golang
 
 ## Design by Contract
@@ -34,7 +34,7 @@ It is however an important point to note that preconditions and postconditions s
 While input validation and result validation are mostly meant to catch runtime errors of a program (like invalid user input), preconditions and postconditions are mostly  meant to catch bugs in the software:
 
 *  preconditions catch bugs in the caller.
-*  postconditions catch bugs in the fubction implementation.
+*  postconditions catch bugs in the function implementation.
   
 
 
