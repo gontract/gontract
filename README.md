@@ -37,7 +37,7 @@ While input validation and result validation are mostly meant to catch runtime e
 *  postconditions catch bugs in the function implementation.
   
 
-
+summing up, preconditions and postconditions are meant to make it easy and natural to write reliable and corret software, especially when the conditions -- i. e. the contract -- are written before the actual implementation. with other words the contract should be considered an important part if an api instead if something separate or part of the implementation. 
 
 
 
