@@ -4,9 +4,9 @@ import "github.com/gontract/gontract"
 
 func exampleFunc() string {
 
-	gontract.Condition(true, gontract.KindPre, "trivially true")
+	gontract.PreCondition(true, "trivially true")
 
-	gontract.Condition(true, gontract.KindPost, "trivially true")
+	gontract.PostCondition(true, "trivially true")
 	return "OK"
 }
 

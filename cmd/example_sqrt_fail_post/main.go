@@ -8,11 +8,11 @@ import (
 
 func CalculateSqrt(n float64) float64 {
 
-	gontract.Condition(n >= 0, gontract.KindPre, "square root undefined for negative numbers")
+	gontract.PreCondition(n >= 0, "square root undefined for negative numbers")
 
 	r := n * n
 
-	gontract.Condition(r*r == n, gontract.KindPost, "input must equal square of result")
+	gontract.PostCondition(r*r == n, "input must equal square of result")
 
 	return r
 }
