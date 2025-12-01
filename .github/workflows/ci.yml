@@ -54,6 +54,10 @@ jobs:
       run: make vet
       shell: bash
 
+    - name: check golang formatting
+      run: make fmt
+      shell: bash
+
     - name:  run unit tests
       run: make test
       shell: bash
