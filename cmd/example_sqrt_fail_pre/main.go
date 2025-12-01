@@ -28,6 +28,8 @@ func main() {
 
 	num = -1
 
+	// bug: calling sqrt with negative number.
+	// This violates the precondition, breaking the contract
 	root = CalculateSqrt(num)
 
 	fmt.Printf("square root of %f is %f\n", num, root)
