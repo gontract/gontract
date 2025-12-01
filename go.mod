@@ -1,4 +1,4 @@
-module github.com/obnoxxx/gontract
+module github.com/gontract/gontract
 
 go 1.25.1
 

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/obnoxxx/gontract"
+	"github.com/gontract/gontract"
 )
 
 func CalculateSqrt(n float64) float64 {

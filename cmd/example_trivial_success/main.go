@@ -1,6 +1,6 @@
 package main
 
-import "github.com/obnoxxx/gontract"
+import "github.com/gontract/gontract"
 
 func exampleFunc() string {
 

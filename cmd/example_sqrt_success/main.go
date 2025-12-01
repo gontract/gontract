@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/obnoxxx/gontract"
+	"github.com/gontract/gontract"
 )
 
 func CalculateSqrt(n float64) float64 {
