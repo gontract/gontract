@@ -13,5 +13,5 @@ func TestCalculateSqrt(t *testing.T) {
 
 	num=4
 	root = CalculateSqrt(num)
-assert.Equal(t, num, root*root)
+	assert.Equal(t, num, root*root)
 }
