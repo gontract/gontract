@@ -53,6 +53,30 @@ and at the end of a function definition, respectively.
 
 gontract implements conditions in an assertion-like manner using `panic()`.
 
+firstly, there is a general condition function:
+```go
+func Condition(predicate bool, kind Kind, msg string)
+```
+
+Here, the type  `Kind`is defined in gontract and can take values  `JindPre` or `KindPost`.
+
+Secongly, there are special-purpose wrappers:
+
+```go
+func PreCondition(predicate bool, msg string)
+
+
+func PostCondition(predicate bool, msg string)
+```
+
+The condition functions panic if the `precondition` is false an return normally otherwise.
+
+
+
+
+
+
+
 This approach effectively prevents a function to run or complete at all when conditions are not satisfied.
 
 The implementation of gontract was partly inspired by
