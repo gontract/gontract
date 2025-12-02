@@ -12,7 +12,7 @@ The core of DbC consists essentially of three concepts:
 * (class) invariants
 
 while class invariants are indeed specific to OOP,  preconditions and postconditions
-apply more generally to routines (functions/methods):
+can be applied more generally to routines (functions/methods):
 
 ## Preconditions and Postconditions
 
