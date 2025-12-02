@@ -13,7 +13,7 @@ func CheckCalculateSqrt(num float64) (ret float64) {
 
 	defer func() {
 		if r := recover(); r != nil {
-			fmt.Printf("CalculateSqrt paniced: '%s'", r.(string))
+			fmt.Printf("recovered from panic(CalculateSqrt):  '%s'", r.(string))
 			ret = -1
 		}
 	}()
@@ -31,4 +31,9 @@ func TestCalculateSqrt(t *testing.T) {
 	num = 4
 	root = CheckCalculateSqrt(num)
 	assert.Equal(t, num, root*root)
+
+	num = -1
+	root = CheckCalculateSqrt(num)
+	// on panic, -1 is returned:
+	assert.Equal(t, root, -1.0)
 }
