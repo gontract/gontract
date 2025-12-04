@@ -15,3 +15,7 @@ fmt:
 .PHONY: test
 test:
 	@go test ./...
+
+.PHONY: golangci-lint
+golangci-lint:
+	@golangci-lint run
