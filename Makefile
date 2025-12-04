@@ -19,3 +19,6 @@ test:
 .PHONY: golangci-lint
 golangci-lint:
 	@golangci-lint run
+
+.PHONY: check
+check: vet fmt golangci-lint
