@@ -8,12 +8,7 @@ import (
 
 func checkCondition(predicate bool, kind Kind, msg string) (ret string) {
 	ret = "foo"
-	defer func() {
-		if r := recover(); r != nil {
-			ret = r.(string)
-		}
-	}()
-
+	defer CatchViolation(&ret)
 	Condition(predicate, kind, msg)
 	return
 
@@ -41,12 +36,7 @@ func TestCondition(t *testing.T) {
 
 func CheckPreCondition(predicate bool, msg string) (ret string) {
 	ret = "foo"
-	defer func() {
-		if r := recover(); r != nil {
-			ret = r.(string)
-		}
-	}()
-
+	defer CatchViolation(&ret)
 	PreCondition(predicate, msg)
 	return
 }
@@ -62,12 +52,7 @@ func TestPreCondition(t *testing.T) {
 }
 func CheckPostCondition(predicate bool, msg string) (ret string) {
 	ret = "foo"
-	defer func() {
-		if r := recover(); r != nil {
-			ret = r.(string)
-		}
-	}()
-
+	defer CatchViolation(&ret)
 	PostCondition(predicate, msg)
 	return
 }

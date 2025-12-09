@@ -33,6 +33,16 @@ func Condition(predicate bool, kind Kind, msg string) {
 	}
 
 }
+
+// CatchViolation
+// utility function for writing unit tests
+// CatchViolation can be used to detect and recover from
+// an unsatisied(i. e. violated)  condition, specifically in test code.
+func CatchViolation(str *string) {
+	if r := recover(); r != nil {
+		*str = r.(string)
+	}
+}
 func PreCondition(predicate bool, msg string) {
 
 	Condition(predicate, KindPre, msg)
