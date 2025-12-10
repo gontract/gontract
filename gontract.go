@@ -9,8 +9,10 @@ import "fmt"
 type Kind int
 
 const (
-	KindPre  Kind = iota // 0
-	KindPost             // 1
+	KindPre     Kind = iota // 0
+	KindPost                // 1
+	KindRequire             // 2 - like Pre
+	KindEnsure              // 3 - like Post
 )
 
 func (k Kind) String() string {
@@ -19,6 +21,10 @@ func (k Kind) String() string {
 		return "precondition"
 	case KindPost:
 		return "postcondition"
+	case KindRequire:
+		return "Requirement"
+	case KindEnsure:
+		return "assurance"
 	default:
 		return "invalid kind"
 
@@ -57,4 +63,13 @@ func PreCondition(predicate bool, msg string) {
 func PostCondition(predicate bool, msg string) {
 
 	Condition(predicate, KindPost, msg)
+}
+
+func Require(predicate bool, msg string) {
+	Condition(predicate, KindRequire, msg)
+}
+
+func Ensure(predicate bool, msg string) {
+	Condition(predicate, KindEnsure, msg)
+
 }
