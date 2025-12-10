@@ -37,7 +37,12 @@ func Condition(predicate bool, kind Kind, msg string) {
 // CatchViolation
 // utility function for writing unit tests
 // CatchViolation can be used to detect and recover from
-// an unsatisied(i. e. violated)  condition, specifically in test code.
+// an unsatisfied(i. e. violated)  condition, specifically in test code.
+//
+// Note that test code will likely have to provide a wrapper function  because
+// the caller's variable to be modified is
+// quite likely not of string type.
+// For an example, see cmd/example_sqrt_success/main_test.go
 func CatchViolation(str *string) {
 	if r := recover(); r != nil {
 		*str = r.(string)
