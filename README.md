@@ -69,7 +69,7 @@ func PreCondition(predicate bool, msg string)
 func PostCondition(predicate bool, msg string)
 ```
 
-The condition functions panic if the `precondition` is false an return normally otherwise.
+The condition functions panic if the `predicate` is false and return normally otherwise.
 
 
 
