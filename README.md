@@ -97,7 +97,7 @@ and at the end of a function definition, respectively.
 
 gontract implements conditions in an assertion-like manner using `panic()`.
 
-firstly, there is a general condition function:
+first of all, there is a general condition function:
 ```go
 func Condition(predicate bool, kind Kind, msg string)
 ```
@@ -113,7 +113,28 @@ func PreCondition(predicate bool, msg string)
 func PostCondition(predicate bool, msg string)
 ```
 
-The condition functions panic if the `predicate` is false and return normally otherwise.
+In addition, two more naturally named wrappers are provided:
+
+```go
+
+func Require(predicate bool, msg string)
+
+func Ensure(predicate bool, msg string)
+
+```
+
+`Require` and `Ensure`serve the same purpose as `PreCondition` and `PostCondition`, repectively. 
+
+
+
+All the condition functions panic if the `predicate` is false and return normally otherwise.
+
+
+Finally, the module provides a helper function for writing unit tests:
+
+```go
+func CatchViolation(str *string)
+```
 
 
 
@@ -123,15 +144,31 @@ The condition functions panic if the `predicate` is false and return normally ot
 
 This approach effectively prevents a function to run or complete at all when conditions are not satisfied.
 
-The implementation of gontract was partly inspired by
-
+This panic-based  implementation of gontract was largely inspired by
 [stone.code/assert](https://pkg.go.dev/gitlab.com/stone.code/assert)
 
 A couple of examples -- both positive and negative --  are provided to  illustrate how this library can be used:
 
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_success
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_fail_pre
-* https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_fail_post 
+* https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_fail_post
+* https://github.com/obnoxxx/gontract/tree/main/cmd/example_division 
+
+The example programs can be run from the root f the project repo with `go run` like so:
+
+```console
+$ go run ./cmd/example_division/main.go 
+ 10.000000 divided by 2.000000  is 5.000000
+ 4.000000 divided by 2.000000  is 2.000000
+ 1.000000 divided by 2.000000  is 0.500000
+ 0.000000 divided by 2.000000  is 0.000000
+$
+
+```
+
+
+Some of the example also contain unit tests in the `main_test.go` files to demonstrate how
+unit tests can be written for DbC-based functions.
 
 
 
