@@ -34,7 +34,7 @@ func TestCondition(t *testing.T) {
 
 }
 
-func CheckPreCondition(predicate bool, msg string) (ret string) {
+func checkPreCondition(predicate bool, msg string) (ret string) {
 	ret = "foo"
 	defer CatchViolation(&ret)
 	PreCondition(predicate, msg)
@@ -42,15 +42,15 @@ func CheckPreCondition(predicate bool, msg string) (ret string) {
 }
 func TestPreCondition(t *testing.T) {
 
-	ret := CheckPreCondition(true, "trivially true")
+	ret := checkPreCondition(true, "trivially true")
 
 	assert.Equal(t, ret, "foo")
 
-	ret = CheckPreCondition(false, "trivially false")
+	ret = checkPreCondition(false, "trivially false")
 
 	assert.Equal(t, ret, "precondition not satisfied (trivially false) - software bug!?")
 }
-func CheckPostCondition(predicate bool, msg string) (ret string) {
+func checkPostCondition(predicate bool, msg string) (ret string) {
 	ret = "foo"
 	defer CatchViolation(&ret)
 	PostCondition(predicate, msg)
@@ -58,9 +58,9 @@ func CheckPostCondition(predicate bool, msg string) (ret string) {
 }
 func TestPostCondition(t *testing.T) {
 
-	ret := CheckPostCondition(true, "trivially true")
+	ret := checkPostCondition(true, "trivially true")
 	assert.Equal(t, ret, "foo")
 
-	ret = CheckPostCondition(false, "trivially false")
+	ret = checkPostCondition(false, "trivially false")
 	assert.Equal(t, ret, "postcondition not satisfied (trivially false) - software bug!?")
 }
