@@ -50,6 +50,38 @@ func TestPreCondition(t *testing.T) {
 
 	assert.Equal(t, ret, "precondition not satisfied (trivially false) - software bug!?")
 }
+func checkRequire(predicate bool, msg string) (ret string) {
+	ret = "foo"
+	defer CatchViolation(&ret)
+	Require(predicate, msg)
+	return
+}
+func TestRequire(t *testing.T) {
+
+	ret := checkRequire(true, "trivially true")
+
+	assert.Equal(t, ret, "foo")
+
+	ret = checkRequire(false, "trivially false")
+
+	assert.Equal(t, ret, "requirement not satisfied (trivially false) - software bug!?")
+}
+func checkEnsure(predicate bool, msg string) (ret string) {
+	ret = "foo"
+	defer CatchViolation(&ret)
+	Ensure(predicate, msg)
+	return
+}
+func TestEnsure(t *testing.T) {
+
+	ret := checkEnsure(true, "trivially true")
+
+	assert.Equal(t, ret, "foo")
+
+	ret = checkEnsure(false, "trivially false")
+
+	assert.Equal(t, ret, "assurance not satisfied (trivially false) - software bug!?")
+}
 func checkPostCondition(predicate bool, msg string) (ret string) {
 	ret = "foo"
 	defer CatchViolation(&ret)

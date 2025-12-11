@@ -22,7 +22,7 @@ func (k Kind) String() string {
 	case KindPost:
 		return "postcondition"
 	case KindRequire:
-		return "Requirement"
+		return "requirement"
 	case KindEnsure:
 		return "assurance"
 	default:
