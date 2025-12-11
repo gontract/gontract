@@ -1,7 +1,12 @@
-hi# gontract
+## gontract
 design-by-contract-like pre- and postconditions  for golang
 
-## Design by Contract
+This project provides a golang module to enable writing golang code in a design-by-contract-like fashion.
+
+Lets look at what Design by Contract is and how it applies to golang.
+
+
+# Design by Contract
 
 Around 1988, [Bertrand Meyer](https://en.wikipedia.org/wiki/Bertrand_Meyer) has introduced the  ["Design by Contract"  methodology](https://en.wikipedia.org/wiki/Design_by_contract) (DbC) for object oriented programming (OOP) along with his programming language Eiffel (see [wikipedia](https://en.wikipedia.org/wiki/Eiffel_%28programming_language%29) and [eiffel.org](https://www.eiffel.org/) ).
 
@@ -11,10 +16,16 @@ The core of DbC consists essentially of three concepts:
 * postconditions
 * (class) invariants
 
-while class invariants are by their name alone  quite evidently indeed specific to OOP,  the hypothesis that this project aims to support is that preconditions and postconditions
-can be applied more generally to routines (functions/methods) in non-OOP languages as well.
+
+# DbC for non-OOP languages?
+
+
+while class invariants are by their name alone  quite evidently indeed specific to OOP,  the hypothesis that this project aims to support is that at least preconditions and postconditions
+can be applied more generally to routines (functions/methods) in non-OOP languages like golang  as well.
 
 ## Preconditions and Postconditions
+
+Let's have a closer look at pre- and postconditions.
 
 **preconditions** are conditions that are  typically  imposed  on  the input of a funcion (parameters/arguments) and they  have to be satisfied in order for the function body to  run at all. It is the caller's responsibiliy to make sure that preconditions are satisfied.
 
@@ -41,9 +52,42 @@ summing up, preconditions and postconditions are meant to make it easy and natur
 
 
 
-The above  description should  have made it evident that the concepts of preconditions and postconditions are applicable to non-OOP languages as well.
+As a conclusion, he above  description should  have made it evident that the concepts of preconditions and postconditions are largely applicable to non-OOP languages.
 
-## This project 
+## Input Validation
+
+The above description poses the question whether preconditions are a replacement for input validation.
+
+This is however certainly not the case:
+
+Input validation is still needed, but the contract moves the responsibility from the function(contractor) to the caller (contractee).
+
+With other words, one kind of software bugs that DbC can reveal is  that a user/caller of a function has not done proper validation of user input.
+
+
+
+
+
+
+## Unit Testing
+
+In many projects with procedural (non-OOP) programming languages, unit testing is an important part of the development (test driven development).
+
+Are unit tests not necessary or useful with DbC?
+
+unit tests are certainly useful for DbC projects but one important aspect to bear in mind is that unit tests for functions with pre- and postconditions
+have to be written in a different manner than for functions without:
+
+qriting unit tests for functions using conditions requites mechanisms for catching and recovering from violations of conditions.
+
+
+
+
+
+
+
+
+# This project 
 
 This project offers mechanisms for writing  preconditions and postconditions in golang.
 
