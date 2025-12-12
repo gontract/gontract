@@ -9,8 +9,8 @@ import "fmt"
 type Kind int
 
 const (
-	KindPre     Kind = iota // 0
-	KindPost                // 1
+	KindPre     Kind = iota // 0 precondition
+	KindPost                // 1 postcondition
 	KindRequire             // 2 - like Pre
 	KindEnsure              // 3 - like Post
 )
