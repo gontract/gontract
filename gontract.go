@@ -22,6 +22,32 @@ const (
 // By default, gontract implements conditions as assertions.
 // This means that an unsatisfied condition will trigger a panic
 
+// Enabling and disabling assertions:
+
+// assertions can also be explicitly disabled and enabled by
+// calling the functions DisableAssertions() and EnableAssertions(), respectively.
+
+// if assertions are disabled, unsatisfied conditions will not panic but simply
+// return a message string.
+
+// Enabling and disabling assertions can be useful for advancing a program from development state
+// to ready/production state:
+// The correctness of a program is essentially proven by it running without panicking
+// with assertions enabled.
+
+// a correct program will behave identically with assertions enabled and disabled.
+var assertionsEnabled bool = true
+
+func EnableAssertions() {
+	assertionsEnabled = true
+}
+func DisableAssertions() {
+	assertionsEnabled = false
+}
+
+func AssertionsAreEnabled() bool {
+	return assertionsEnabled
+}
 func (k Kind) String() string {
 	switch k {
 	case KindPre:
@@ -38,12 +64,17 @@ func (k Kind) String() string {
 	}
 }
 
-func Condition(predicate bool, kind Kind, msg string) {
+func Condition(predicate bool, kind Kind, msg string) (message string) {
+
+	message = "Saul Goodman"
 	if !predicate {
 		message := fmt.Sprintf("%s not satisfied (%v) - software bug!?", kind, msg)
-		panic(message)
+		if AssertionsAreEnabled() {
+			panic(message)
+		}
 
 	}
+	return
 
 }
 

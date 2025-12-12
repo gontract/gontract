@@ -96,3 +96,26 @@ func TestPostCondition(t *testing.T) {
 	ret = checkPostCondition(false, "trivially false")
 	assert.Equal(t, ret, "postcondition not satisfied (trivially false) - software bug!?")
 }
+func TestEnableAssertions(t *testing.T) {
+	// default value:
+	assert.Equal(t, AssertionsAreEnabled(), true)
+	EnableAssertions()
+	assert.Equal(t, AssertionsAreEnabled(), true)
+}
+func TestDisableAssertions(t *testing.T) {
+	// valuefrom previous test:
+	assert.Equal(t, AssertionsAreEnabled(), true)
+	DisableAssertions()
+	assert.Equal(t, AssertionsAreEnabled(), false)
+
+}
+func TestAssertionsDisableEnable(t *testing.T) {
+	// value from previous test:
+	assert.Equal(t, AssertionsAreEnabled(), false)
+	EnableAssertions()
+	assert.Equal(t, AssertionsAreEnabled(), true)
+	DisableAssertions()
+	assert.Equal(t, AssertionsAreEnabled(), false)
+	EnableAssertions()
+	assert.Equal(t, AssertionsAreEnabled(), true)
+}
