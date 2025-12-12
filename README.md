@@ -1,4 +1,11 @@
-## gontract
+# gontract
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/gontract/gontract)](https://goreportcard.com/report/github.com/gontract/gontract)
+[![GPL license](https://img.shields.io/badge/license-GPL-blue.svg)](http://opensource.org/licenses/GPL)
+
+## Overview
+
+
 design-by-contract-like pre- and postconditions  for golang
 
 This project provides a golang module to enable writing golang code in a design-by-contract-like fashion.
