@@ -2,7 +2,7 @@ package gontract
 
 // The ipurpose of the gontract package is to provide assert-style condition functions
 // in order to allow implementing pre- and postconditions for functions in
-// the spirit of "design by contract".
+// the spirit of "design by contract" or "contract programming".
 
 import "fmt"
 
@@ -14,6 +14,13 @@ const (
 	KindRequire             // 2 - like Pre
 	KindEnsure              // 3 - like Post
 )
+
+// The purpose of conditions is to prevent a function from
+// running (precondition) or returning regularly (postcondition)
+// if the predicate of the condition is not satisfied.
+
+// By default, gontract implements conditions as assertions.
+// This means that an unsatisfied condition will trigger a panic
 
 func (k Kind) String() string {
 	switch k {
