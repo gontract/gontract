@@ -1,0 +1,47 @@
+package main
+
+import (
+	"testing"
+
+	"github.com/gontract/gontract"
+	"github.com/stretchr/testify/assert"
+)
+
+func catch_violation(num *float64) {
+
+	var str = "foo"
+
+	gontract.CatchViolation(&str)
+	if str != "foo" {
+		*num = -1.0
+	}
+
+}
+
+func checkDivide(dividend float64, divisor float64) (ret float64) {
+
+	ret = 0
+	defer catch_violation(&ret)
+
+	ret = Divide(dividend, divisor)
+	return
+
+}
+
+func TestDivide(t *testing.T) {
+
+	cases := [...]struct {
+		dividend float64
+		divisor  float64
+		quotient float64
+	}{
+		{10.0, 2.0, 5.0},
+		{4.0, 2.0, 2.0},
+		{0.0, 2.0, 0.0},
+		{1.0, 0.0, -1.0},
+	}
+	for _, c := range cases {
+		quotient := checkDivide(c.dividend, c.divisor)
+		assert.Equal(t, quotient, c.quotient)
+	}
+}
