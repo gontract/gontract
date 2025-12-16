@@ -171,16 +171,15 @@ Ensure(postcondition ...)
 
 
 }
-
-
-A couple of examples -- both positive and negative --  are provided to  illustrate how this library can be used:
+```
+A cuple of examples -- both positive and negative --  are provided to  illustrate how this library can be used:
 
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_success
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_fail_pre
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_fail_post
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_division 
 
-The example programs can be run from the root f the project repo with `go run` like so:T
+The example programs can be run from the root f the project repo with `go run` like so:
 ``````console
 $ go run ./cmd/example_division/main.go 
  10.000000 divided by 2.000000  is 5.000000
