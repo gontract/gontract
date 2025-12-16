@@ -139,13 +139,6 @@ func Ensure(predicate bool, msg string)
 In order to prevent further code execution, all these condition functions panic if the `predicate` is false and return normally otherwise.
 
 
-Finally, the module provides a helper function for writing unit tests:
-
-```go
-func CatchViolation(str *string)
-```
-
-
 
 
 
@@ -190,8 +183,16 @@ $
 
 ```
 
+In addition to the  condition functions, the module provides a helper function for writing unit tests:
 
-Some of the example also contain unit tests in the `main_test.go` files to demonstrate how
+```go
+func CatchViolation(str *string)
+```
+
+
+
+
+Some of the examples also contain unit tests in the `main_test.go` files to demonstrate how
 unit tests can be written for DbC-based functions.
 
 
