@@ -165,7 +165,8 @@ Ensure(postcondition ...)
 
 }
 ```
-A cuple of examples -- both positive and negative --  are provided to  illustrate how this library can be used:
+
+A couple of examples -- both positive and negative --  are provided to  illustrate how this library can be used:
 
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_success
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_fail_pre
@@ -180,7 +181,6 @@ $ go run ./cmd/example_division/main.go
  1.000000 divided by 2.000000  is 0.500000
  0.000000 divided by 2.000000  is 0.000000
 $
-
 ```
 
 In addition to the  condition functions, the module provides a helper function for writing unit tests:
