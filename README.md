@@ -11,7 +11,7 @@ design-by-contract-like pre- and postconditions  for golang
 
 This project provides a golang module to enable writing golang code in a design-by-contract-like fashion.
 
-Lets look at what Design by Contract is and how it applies to golang.
+Let's look at what Design by Contract is and how it applies to golang.
 
 
 # Design by Contract
@@ -29,16 +29,16 @@ The core of DbC consists essentially of three concepts:
 # DbC for non-OOP languages?
 
 
-while class invariants are by their name alone  quite evidently indeed specific to OOP,  the hypothesis that this project aims to support is that at least preconditions and postconditions
-can be applied more generally to routines (functions/methods) in non-OOP languages like golang  as well.
+while class invariants are by their name alone  quite evidently indeed specific to OOP,  the hypothesis that this project aims to support -- in the example case of golang --  that at least preconditions and postconditions
+can be applied more generally to routines (functions/methods) in procedural non-OOP languages as well.
 
 ## Preconditions and Postconditions
 
 Let's have a closer look at pre- and postconditions.
 
-**preconditions** are conditions that are  typically  imposed  on  the input of a funcion (parameters/arguments) and they  have to be satisfied in order for the function body to  run at all. It is the caller's responsibiliy to make sure that preconditions are satisfied.
+**preconditions** are conditions that are  typically  imposed  upon  the input of a funcion (its parameters/arguments) and they  have to be satisfied in order for the function body to  run at all. It is the caller's responsibiliy to make sure that preconditions are satisfied.
 
-**postconditions** are usually imposed on the result of a function  (return values)
+**postconditions** are usually imposed upon the output  of a function  (its return values)
 and they have to be satisfied in order for the function to complete regularly.
 It is the responsibility of the function implementation  to make sure postconditions are satisfied
 if the function ran, i. e. if it was provided with valid input.
@@ -57,7 +57,7 @@ While input validation and result validation are mostly meant to catch runtime e
 *  postconditions catch bugs in the function implementation.
   
 
-summing up, preconditions and postconditions are meant to make it easy and natural to write reliable and corret software, especially when the conditions -- i. e. the contract -- are written before the actual implementation. with other words the contract should be considered an important part if an API rather than something separate or part of the implementation. 
+summing up, preconditions and postconditions are meant to make it easy and natural to write reliable and correct software, especially when the conditions -- i. e. the contract -- are written before the actual implementation. with other words the contract should be considered an important part if an API rather than something separate or part of the implementation. 
 
 
 
@@ -69,7 +69,7 @@ The above description poses the question whether preconditions are a replacement
 
 This is however certainly not the case:
 
-Input validation is still needed, but the contract moves the responsibility from the function(contractor) to the caller (contractee).
+Input validation is still needed, but the contract moves the responsibility from the function(the contractor) to the caller (the contractee).
 
 With other words, one kind of software bugs that DbC can reveal is  that a user/caller of a function has not done proper validation of user input.
 
@@ -87,7 +87,7 @@ Are unit tests not necessary or useful with DbC?
 unit tests are certainly useful for DbC projects but one important aspect to bear in mind is that unit tests for functions with pre- and postconditions
 have to be written in a different manner than for functions without:
 
-qriting unit tests for functions using conditions requites mechanisms for catching and recovering from violations of conditions.
+writing unit tests for functions using conditions requites mechanisms for catching and recovering from violations of conditions.
 
 
 
@@ -136,7 +136,7 @@ func Ensure(predicate bool, msg string)
 
 
 
-All the condition functions panic if the `predicate` is false and return normally otherwise.
+In order to prevent further code execution, all these condition functions panic if the `predicate` is false and return normally otherwise.
 
 
 Finally, the module provides a helper function for writing unit tests:
@@ -156,6 +156,23 @@ This approach effectively prevents a function to run or complete at all when con
 This panic-based  implementation of gontract was largely inspired by
 [stone.code/assert](https://pkg.go.dev/gitlab.com/stone.code/assert)
 
+A typical function using gontract might look as follows.
+
+```go
+
+func myfunc(args ...) {
+Require(precondition ...)
+
+// implementation:
+...
+
+Ensure(postcondition ...)
+
+
+
+}
+
+
 A couple of examples -- both positive and negative --  are provided to  illustrate how this library can be used:
 
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_success
@@ -163,9 +180,9 @@ A couple of examples -- both positive and negative --  are provided to  illustra
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_fail_post
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_division 
 
-The example programs can be run from the root f the project repo with `go run` like so:
+The example programs can be run from the root f the project repo with `go runike so:
 
-```console
+``````console
 $ go run ./cmd/example_division/main.go 
  10.000000 divided by 2.000000  is 5.000000
  4.000000 divided by 2.000000  is 2.000000
