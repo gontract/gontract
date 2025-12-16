@@ -180,8 +180,7 @@ A couple of examples -- both positive and negative --  are provided to  illustra
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_sqrt_fail_post
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_division 
 
-The example programs can be run from the root f the project repo with `go run like so:
-
+The example programs can be run from the root f the project repo with `go run` like so:T
 ``````console
 $ go run ./cmd/example_division/main.go 
  10.000000 divided by 2.000000  is 5.000000
