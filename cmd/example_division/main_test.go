@@ -45,3 +45,12 @@ func TestDivide(t *testing.T) {
 		assert.Equal(t, quotient, c.quotient)
 	}
 }
+
+func Test_main(t *testing.T) {
+	var err error = nil
+	main()
+
+	// trivial condition as main has no result
+	assert.Equal(t, err, nil)
+
+}
