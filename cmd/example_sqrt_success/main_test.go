@@ -50,3 +50,9 @@ func TestCalculateSqrt(t *testing.T) {
 	// on violation, -1 is returned:
 	assert.Equal(t, root, -1.0)
 }
+
+func Test_main(t *testing.T) {
+	main()
+	// trivial assert as there is nothing to test
+	assert.Equal(t, true, true)
+}
