@@ -22,7 +22,7 @@ func Divide(dividend float64, divisor float64) (quotient float64) {
 func main() {
 
 	dividends := [...]float64{10.0, 4.0, 1.0, 0}
-	var divisor float64 = 2.0
+	var divisor = 2.0
 
 	for _, num := range dividends {
 
