@@ -22,7 +22,7 @@ func TestCondition(t *testing.T) {
 		expected  string
 	}{
 		{true, KindPre, "trivially true", "foo"},
-		{false, KindPost, "trivially false", "postcondition not satisfied (trivially false) - software bug!?"},
+		{false, KindPost, "trivially false", "assertion error: postcondition not satisfied (trivially false) - software bug!?"},
 	}
 
 	for _, c := range cases {
@@ -48,7 +48,7 @@ func TestPreCondition(t *testing.T) {
 
 	ret = checkPreCondition(false, "trivially false")
 
-	assert.Equal(t, ret, "precondition not satisfied (trivially false) - software bug!?")
+	assert.Equal(t, ret, "assertion error: precondition not satisfied (trivially false) - software bug!?")
 }
 func checkRequire(predicate bool, msg string) (ret string) {
 	ret = "foo"
@@ -64,7 +64,7 @@ func TestRequire(t *testing.T) {
 
 	ret = checkRequire(false, "trivially false")
 
-	assert.Equal(t, ret, "requirement not satisfied (trivially false) - software bug!?")
+	assert.Equal(t, ret, "assertion error: requirement not satisfied (trivially false) - software bug!?")
 }
 func checkEnsure(predicate bool, msg string) (ret string) {
 	ret = "foo"
@@ -80,7 +80,7 @@ func TestEnsure(t *testing.T) {
 
 	ret = checkEnsure(false, "trivially false")
 
-	assert.Equal(t, ret, "assurance not satisfied (trivially false) - software bug!?")
+	assert.Equal(t, ret, "assertion error: assurance not satisfied (trivially false) - software bug!?")
 }
 func checkPostCondition(predicate bool, msg string) (ret string) {
 	ret = "foo"
@@ -94,7 +94,7 @@ func TestPostCondition(t *testing.T) {
 	assert.Equal(t, ret, "foo")
 
 	ret = checkPostCondition(false, "trivially false")
-	assert.Equal(t, ret, "postcondition not satisfied (trivially false) - software bug!?")
+	assert.Equal(t, ret, "assertion error: postcondition not satisfied (trivially false) - software bug!?")
 }
 func TestEnableAssertions(t *testing.T) {
 	// default value:

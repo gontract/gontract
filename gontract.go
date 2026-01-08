@@ -4,7 +4,11 @@ package gontract
 // in order to allow implementing pre- and postconditions for functions in
 // the spirit of "design by contract" or "contract programming".
 
-import "fmt"
+import (
+	"fmt"
+
+	"gitlab.com/stone.code/assert"
+)
 
 type Kind int
 
@@ -66,13 +70,10 @@ func (k Kind) String() string {
 
 func Condition(predicate bool, kind Kind, msg string) (message string) {
 
-	message = "Saul Goodman"
-	if !predicate {
-		message := fmt.Sprintf("%s not satisfied (%v) - software bug!?", kind, msg)
-		if AssertionsAreEnabled() {
-			panic(message)
-		}
+	message = fmt.Sprintf("%s not satisfied (%v) - software bug!?", kind, msg)
 
+	if AssertionsAreEnabled() {
+		assert.Assert(predicate, message)
 	}
 	return
 
@@ -89,7 +90,7 @@ func Condition(predicate bool, kind Kind, msg string) (message string) {
 // For an example, see cmd/example_sqrt_success/main_test.go
 func CatchViolation(str *string) {
 	if r := recover(); r != nil {
-		*str = r.(string)
+		*str = r.(error).Error()
 	}
 }
 func PreCondition(predicate bool, msg string) {
