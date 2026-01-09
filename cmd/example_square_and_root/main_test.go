@@ -57,7 +57,6 @@ func TestSquare(t *testing.T) {
 
 	assert.Equal(t, s, 9.0)
 
-	return
 }
 
 func TestSquareRoot(t *testing.T) {
@@ -75,7 +74,6 @@ func TestSquareRoot(t *testing.T) {
 	// on violation, -1 is returned:
 	assert.Equal(t, r, -1.0)
 
-	return
 }
 
 func Test_main(t *testing.T) {
