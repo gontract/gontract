@@ -146,8 +146,9 @@ In order to prevent further code execution, all these condition functions panic 
 
 This approach effectively prevents a function to run or complete at all when conditions are not satisfied.
 
-This panic-based  implementation of gontract was largely inspired by
-[stone.code/assert](https://pkg.go.dev/gitlab.com/stone.code/assert)
+
+Instead of using `panic()`directly, gontract uses the excellemt
+[stone.code/assert](https://pkg.go.dev/gitlab.com/stone.code/assert) package which makes the code more idiomatic.
 
 A typical function using gontract might look as follows.
 
@@ -174,7 +175,8 @@ A couple of examples -- both positive and negative --  are provided to  illustra
 * https://github.com/obnoxxx/gontract/tree/main/cmd/example_division 
 
 The example programs can be run from the root f the project repo with `go run` like so:
-``````console
+
+```console
 $ go run ./cmd/example_division/main.go 
  10.000000 divided by 2.000000  is 5.000000
  4.000000 divided by 2.000000  is 2.000000
