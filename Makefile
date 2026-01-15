@@ -1,4 +1,7 @@
 
+
+GOLANGCI_LINT := go run github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
 .PHONY: go.vet
 go.vet: vet
 .PHONY: vet
@@ -18,7 +21,7 @@ test:
 
 .PHONY: golangci-lint
 golangci-lint:
-	@golangci-lint run
+	@$(GOLANGCI_LINT) run
 
 .PHONY: check
 check: vet fmt golangci-lint
