@@ -23,5 +23,9 @@ test:
 golangci-lint:
 	@$(GOLANGCI_LINT) run
 
+
+.PHONY: lint
+lint: vet golangci-lint
+
 .PHONY: check
-check: vet fmt golangci-lint
+check: fmt lint
