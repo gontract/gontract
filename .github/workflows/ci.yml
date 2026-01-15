@@ -36,22 +36,20 @@ jobs:
     - name: Install dependencies (Windows)
       if: matrix.os == 'windows-latest'
       run: |
-#        choco install -y make sed
-#        choco install -y pandoc
+        echo "nothing to do."
 
     - name: Install dependencies (macOS)
       if: matrix.os == 'macos-latest'
       run: |
-#        brew install pandoc
+        echo "nothing to do."
         
     - name: Install dependencies (Linux/Ubuntu)
       if: matrix.os == 'ubuntu-latest'
       run: |
-#        sudo apt update
-#        sudo apt install -y pandoc
+        echo "nothing to do"
 
     - name:  lint the code
-      run: make vet
+      run: make lint
       shell: bash
 
     - name: check golang formatting
