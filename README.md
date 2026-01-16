@@ -198,6 +198,14 @@ Some of the examples also contain unit tests in the `main_test.go` files to demo
 unit tests can be written for DbC-based functions.
 
 
+## License
+
+Gontract is licensed under the GNU Lesser General Public License v3.0 or later (LGPL-3.0-or-later). 
+
+This allows Gontract to be used in projects with more permissive licenses (like Apache 2.0 or MIT) 
+while ensuring that any improvements to Gontract itself remain open source.
+
+
 
 
 
