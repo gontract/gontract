@@ -147,7 +147,7 @@ In order to prevent further code execution, all these condition functions panic 
 This approach effectively prevents a function to run or complete at all when conditions are not satisfied.
 
 
-Instead of using `panic()`directly, gontract uses the excellemt
+Instead of using `panic()`directly, gontract uses the excellent
 [stone.code/assert](https://pkg.go.dev/gitlab.com/stone.code/assert) package which makes the code more idiomatic.
 
 A typical function using gontract might look as follows.
