@@ -53,7 +53,7 @@ jobs:
       shell: bash
 
     - name: check golang formatting
-      run: make fmt
+      run: make check.go.fmt
       shell: bash
 
     - name:  run unit tests
