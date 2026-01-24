@@ -104,16 +104,19 @@ Since golang does not have any such mechanisms   built into the language,
 they are implemented as separate functions intended  to be called at the beginning
 and at the end of a function definition, respectively.
 
-gontract implements conditions in an assertion-like manner using `panic()`.
 
 first of all, there is a general condition function:
 ```go
 func Condition(predicate bool, kind Kind, msg string)
 ```
 
-Here, the type  `Kind`is defined in gontract and can take values  `JindPre` or `KindPost`.
+Here, the type  `Kind` is defined in gontract and can take values  `KindPre`,`KindPost`, `KindRequire`, and `KindEnsure`.
 
-Secongly, there are special-purpose wrappers:
+In order to prevent further code execution, `condition()` aborts execution  if the `predicate` is false and returns normally otherwise.
+
+
+
+For convenience, ,special-purpose wrappers are provided:
 
 ```go
 func PreCondition(predicate bool, msg string)
@@ -122,7 +125,7 @@ func PreCondition(predicate bool, msg string)
 func PostCondition(predicate bool, msg string)
 ```
 
-In addition, two more naturally named wrappers are provided:
+In addition, for more idiomatic use, two more naturally named wrappers are provided:
 
 ```go
 
@@ -136,7 +139,6 @@ func Ensure(predicate bool, msg string)
 
 
 
-In order to prevent further code execution, all these condition functions panic if the `predicate` is false and return normally otherwise.
 
 
 
@@ -144,11 +146,14 @@ In order to prevent further code execution, all these condition functions panic 
 
 
 
-This approach effectively prevents a function to run or complete at all when conditions are not satisfied.
+Whensed in the appropriate locations, this approach effectively prevents a function to run or complete at all when conditions are not satisfied.
 
 
-Instead of using `panic()`directly, gontract uses the excellent
-[stone.code/assert](https://pkg.go.dev/gitlab.com/stone.code/assert) package which makes the code more idiomatic.
+## Implementation Note
+
+instead of using go's builtin function   `panic()` directly to abort execution,  gontract implements conditions in an assertion-like manner using  `Assert()` from the excellent [stone.code/assert](https://pkg.go.dev/gitlab.com/stone.code/assert) package.
+
+## Example Use
 
 A typical function using gontract might look as follows.
 
