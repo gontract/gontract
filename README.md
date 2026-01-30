@@ -151,7 +151,7 @@ Whensed in the appropriate locations, this approach effectively prevents a funct
 
 ## Implementation Note
 
-instead of using go's builtin function   `panic()` directly to abort execution,  gontract implements conditions in an assertion-like manner using  `Assert()` from the excellent [stone.code/assert](https://pkg.go.dev/gitlab.com/stone.code/assert) package.
+instead of using go's builtin function   `panic()` directly to abort execution,  gontract implements conditions in an assertion-like manner using  `Assert()` from the excellent [stone.code/assert](https://gitlab.com/stone.code/assert) package.
 
 ## Example Use
 
