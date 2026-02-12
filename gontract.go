@@ -13,10 +13,8 @@ import (
 type Kind int
 
 const (
-	KindPre     Kind = iota // 0 precondition
-	KindPost                // 1 postcondition
-	KindRequire             // 2 - like Pre
-	KindEnsure              // 3 - like Post
+	KindRequire Kind = iota // 0 require - a preondition
+	KindEnsure              // 1 ensure - a like postcondition
 )
 
 // The purpose of conditions is to prevent a function from
@@ -54,10 +52,6 @@ func AssertionsAreEnabled() bool {
 }
 func (k Kind) String() string {
 	switch k {
-	case KindPre:
-		return "precondition"
-	case KindPost:
-		return "postcondition"
 	case KindRequire:
 		return "requirement"
 	case KindEnsure:
@@ -93,21 +87,11 @@ func CatchViolation(str *string) {
 		*str = r.(error).Error()
 	}
 }
-func PreCondition(predicate bool, msg string) {
-
-	Condition(predicate, KindPre, msg)
-
-}
-
-func PostCondition(predicate bool, msg string) {
-
-	Condition(predicate, KindPost, msg)
-}
-
 func Require(predicate bool, msg string) {
-	Condition(predicate, KindRequire, msg)
-}
 
+	Condition(predicate, KindRequire, msg)
+
+}
 func Ensure(predicate bool, msg string) {
 	Condition(predicate, KindEnsure, msg)
 

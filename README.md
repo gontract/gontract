@@ -99,53 +99,34 @@ writing unit tests for functions using conditions requites mechanisms for catchi
 
 # This project 
 
-This project offers mechanisms for writing  preconditions and postconditions in golang.
+This project offers mechanisms for writing preconditions and postconditions in golang.
 
-Since golang does not have any such mechanisms   built into the language, 
+Since golang does not have any such mechanisms built into the language, 
 they are implemented as separate functions intended  to be called at the beginning
 and at the end of a function definition, respectively.
 
 
-first of all, there is a general condition function:
-```go
-func Condition(predicate bool, kind Kind, msg string)
-```
-
-Here, the type  `Kind` is defined in gontract and can take values  `KindPre`,`KindPost`, `KindRequire`, and `KindEnsure`.
-
-In order to prevent further code execution, `condition()` aborts execution  if the `predicate` is false and returns normally otherwise.
 
 
 
-For convenience, ,special-purpose wrappers are provided:
+In order to prevent further code execution, abort execution  if the `predicate` is false and returns normally otherwise.
+
+
+
+gontract offers two condition functions:
 
 ```go
-func PreCondition(predicate bool, msg string)
-
-
-func PostCondition(predicate bool, msg string)
-```
-
-In addition, for more idiomatic use, two more naturally named wrappers are provided:
-
 ```go
 
-func Require(predicate bool, msg string)
+func Require(predicate bool, msg string)// precondition
 
-func Ensure(predicate bool, msg string)
+func Ensure(predicate bool, msg string) // postcondition
 
 ```
 
-`Require` and `Ensure`serve the same purpose as `PreCondition` and `PostCondition`, repectively. 
-
-
-
-
-
-
-
-
-
+1`Require`is meant to be invoked at the beginning of a function  as a precondition
+and `Ensure` is intended for the end of a function as a postcondition.
+In order to prevent further code execution, both condition functions abort execution if the `predicate` is false and returns normally otherwise.
 
 Whensed in the appropriate locations, this approach effectively prevents a function to run or complete at all when conditions are not satisfied.
 
