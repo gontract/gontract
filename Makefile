@@ -2,11 +2,11 @@
 
 GOLANGCI_LINT := go run github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
-.PHONY: go.vet
-go.vet: vet
-.PHONY: vet
-vet:
-		@go vet ./...
+
+.PHONY: check.go.vet
+check.go.vet:
+	@echo "vetting go code..."
+	@go vet ./...
 
 
 .PHOHY: check.go.fmt
@@ -19,24 +19,23 @@ check.go.fmt:
 	else \
 		echo "All files formatted correctly."; \
 	fi
-.PHONY: go.fmt
-go.fmt: fmt
 
 .PHONY: fix.go.fmt
-fix.go.fmt: #␣fix␣go␣formatting␣(if␣needed)
+fix.go.fmt: #␣fix␣go␣formatting (if needed)
 	@ go fmt ./...
 
 .PHONY: test
-test: lint
+test: check
 	@go test ./...
 
 .PHONY: golangci-lint
 golangci-lint:
+	@echo "linting go code ..."
 	@$(GOLANGCI_LINT) run
 
 
-.PHONY: lint
-lint: go.vet golangci-lint
+.PHONY: check.go.lint
+check.go.lint: check.go.vet golangci-lint
 
 .PHONY: check
-check: check.go.fmt lint
+check: check.go.fmt check.go.lint
