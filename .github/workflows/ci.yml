@@ -51,7 +51,7 @@ jobs:
         echo "nothing to do"
 
     - name:  lint the code
-      run: make lint
+      run: make check.go.lint
       shell: bash
 
     - name: check golang formatting
