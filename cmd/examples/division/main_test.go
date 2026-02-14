@@ -3,19 +3,14 @@ package main
 import (
 	"testing"
 
-	"github.com/gontract/gontract"
 	"github.com/stretchr/testify/assert"
 )
 
 func catch_violation(num *float64) {
 
-	var str = "foo"
-
-	gontract.CatchViolation(&str)
-	if str != "foo" {
+	if r := recover(); r != nil {
 		*num = -1.0
 	}
-
 }
 
 func checkDivide(dividend float64, divisor float64) (ret float64) {

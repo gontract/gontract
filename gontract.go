@@ -84,7 +84,18 @@ func Condition(predicate bool, kind Kind, msg string) (message string) {
 // For an example, see cmd/example_sqrt_success/main_test.go
 func CatchViolation(str *string) {
 	if r := recover(); r != nil {
-		*str = r.(error).Error()
+		// Handle different panic value types safely
+		/*
+			switch v := r.(type) {
+			case error:
+				*str = v.Error()
+			case string:
+				*str = v
+			default:
+				*str = fmt.Sprintf("%v", r)
+			}
+		*/
+		*str = fmt.Sprint(r)
 	}
 }
 func Require(predicate bool, msg string) {
