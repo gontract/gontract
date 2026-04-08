@@ -8,13 +8,21 @@ import (
 	"github.com/gontract/gontract"
 )
 
+var EPSILON float64 = 0.00000001
+
+func floatEquals(a, b float64) bool {
+	if (a-b) < EPSILON && (b-a) < EPSILON {
+		return true
+	}
+	return false
+}
 func Divide(dividend float64, divisor float64) (quotient float64) {
 
 	gontract.Require(divisor != 0, "divisor must be non-zero")
 
 	quotient = dividend / divisor
 
-	gontract.Ensure(quotient*divisor == dividend, "quotient calculated correctly")
+	gontract.Ensure(floatEquals(quotient*divisor, dividend), "quotient calculated correctly")
 
 	return
 }
