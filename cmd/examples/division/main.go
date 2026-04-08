@@ -24,10 +24,10 @@ func main() {
 	dividends := [...]float64{10.0, 4.0, 1.0, 0}
 	var divisor = 2.0
 
-	for _, num := range dividends {
+	for _, dividend := range dividends {
 
-		quotient := Divide(num, divisor)
+		quotient := Divide(dividend, divisor)
 
-		fmt.Printf(" %f divided by %f  is %f\n", num, divisor, quotient)
+		fmt.Printf(" %f divided by %f  is %f\n", dividend, divisor, quotient)
 	}
 }
