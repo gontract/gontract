@@ -6,13 +6,13 @@ import (
 	"github.com/gontract/gontract"
 )
 
-func CalculateSqrt(n float64) float64 {
+func CalculateSqrt(n float64) (r float64) {
 
 	gontract.Require(n >= 0, "square root undefined for negative numbers")
 
 	// Bug: This calculation of the result is wrong and breaks
 	// contract (see postcondition below).
-	r := n * n
+	r = n * n
 
 	gontract.Ensure(r*r == n, "input must equal square of result")
 
