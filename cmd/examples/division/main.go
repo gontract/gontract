@@ -10,18 +10,24 @@ import (
 
 var EPSILON float64 = 0.00000001
 
+// floaEquals():
+// function to use instead of == for comparing floats.
+// This takes rounding errors into accout.
 func floatEquals(a, b float64) bool {
 	if (a-b) < EPSILON && (b-a) < EPSILON {
 		return true
 	}
 	return false
 }
+
 func Divide(dividend float64, divisor float64) (quotient float64) {
 
+	// precondition:
 	gontract.Require(divisor != 0, "divisor must be non-zero")
 
 	quotient = dividend / divisor
 
+	// postcondition:
 	gontract.Ensure(floatEquals(quotient*divisor, dividend), "quotient calculated correctly")
 
 	return
