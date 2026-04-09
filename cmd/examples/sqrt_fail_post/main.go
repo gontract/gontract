@@ -14,7 +14,7 @@ func CalculateSqrt(n float64) (r float64) {
 	// contract (see postcondition below).
 	r = n * n
 
-	gontract.Ensure(r*r == n, "input must equal square of result")
+	gontract.Ensure(r*r == n, "square root calculated correctly")
 
 	return r
 }
