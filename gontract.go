@@ -60,11 +60,25 @@ func (k Kind) String() string {
 		return "invalid kind"
 
 	}
+
+}
+
+// Culprit function for blaming:
+func (k Kind) Culprit() string {
+	switch k {
+	case KindRequire:
+		return "caller"
+	case KindEnsure:
+		return "callee"
+	default:
+		return "unknown part"
+	}
+
 }
 
 func Condition(predicate bool, kind Kind, msg string) (message string) {
 
-	message = fmt.Sprintf("%s not satisfied (%v) - software bug!?", kind, msg)
+	message = fmt.Sprintf("%s not satisfied (%v) - software bug in %v!", kind, msg, kind.Culprit())
 
 	if AssertionsAreEnabled() {
 		assert.Assert(predicate, message)

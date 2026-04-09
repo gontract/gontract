@@ -22,7 +22,7 @@ func TestCondition(t *testing.T) {
 		expected  string
 	}{
 		{true, KindRequire, "trivially true", "foo"},
-		{false, KindEnsure, "trivially false", "assertion error: assurance not satisfied (trivially false) - software bug!?"},
+		{false, KindEnsure, "trivially false", "assertion error: assurance not satisfied (trivially false) - software bug in callee!"},
 	}
 
 	for _, c := range cases {
@@ -47,7 +47,7 @@ func TestRequire(t *testing.T) {
 
 	ret = checkRequire(false, "trivially false")
 
-	assert.Equal(t, ret, "assertion error: requirement not satisfied (trivially false) - software bug!?")
+	assert.Equal(t, ret, "assertion error: requirement not satisfied (trivially false) - software bug in caller!")
 }
 func checkEnsure(predicate bool, msg string) (ret string) {
 	ret = "foo"
@@ -63,7 +63,7 @@ func TestEnsure(t *testing.T) {
 
 	ret = checkEnsure(false, "trivially false")
 
-	assert.Equal(t, ret, "assertion error: assurance not satisfied (trivially false) - software bug!?")
+	assert.Equal(t, ret, "assertion error: assurance not satisfied (trivially false) - software bug in callee!")
 }
 func TestEnableAssertions(t *testing.T) {
 	// default value:
