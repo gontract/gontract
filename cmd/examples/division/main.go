@@ -24,11 +24,12 @@ func Divide(dividend float64, divisor float64) (quotient float64) {
 
 	// precondition:
 	gontract.Require(divisor != 0, "divisor must be non-zero")
+	// postcondition:
+	defer func() {
+		gontract.Ensure(floatEquals(quotient*divisor, dividend), "quotient calculated correctly")
+	}()
 
 	quotient = dividend / divisor
-
-	// postcondition:
-	gontract.Ensure(floatEquals(quotient*divisor, dividend), "quotient calculated correctly")
 
 	return
 }
