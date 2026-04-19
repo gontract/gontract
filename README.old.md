@@ -37,14 +37,14 @@ can be applied more generally to routines (functions/methods) in procedural non-
 
 Let's have a closer look at pre- and postconditions.
 
-**preconditions** are conditions that are  typically  imposed  upon  the input of a funcion (its parameters/arguments) and they  have to be satisfied in order for the function body to  run at all. It is the caller's responsibiliy to make sure that preconditions are satisfied.
+**preconditions** are conditions that are  typically  imposed  upon  the input of a function (its parameters/arguments) and they  have to be satisfied in order for the function body to  run at all. It is the caller's responsibiliy to make sure that preconditions are satisfied.
 
 **postconditions** are usually imposed upon the output  of a function  (its return values)
 and they have to be satisfied in order for the function to complete regularly.
 It is the responsibility of the function implementation  to make sure postconditions are satisfied
 if the function ran, i. e. if it was provided with valid input.
 
-preconditions and ppostconditions form the essence of the **contract** between the
+preconditions and postconditions form the essence of the **contract** between the
 contractor (the function) and the contractee (the caller of the function).
 
 Pre- and postconditions are essentially means for checking the input and result of a function, just a bit more intrinsically and idiomatically than with the usual conditional (if-else) 
@@ -115,7 +115,6 @@ In order to prevent further code execution, abort execution  if the `predicate` 
 
 gontract offers two condition functions:
 
-```go
 ```go
 
 func Require(predicate bool, msg string)// precondition
