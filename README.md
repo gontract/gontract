@@ -5,7 +5,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/gontract/gontract.svg)](https://pkg.go.dev/github.com/gontract/gontract)
 
 # gontract
-**gontract** is a Go library for Design by Contract (DbC) that provides explicit `Require` and `Ensure` checks for preconditions and postconditions in Go code.
+**gontract** is a require-ensure-library  Go that provides a contract-programming framework. To enable Design by Contract (DbC), it aims to to bridge the "procedural gap" in Go by providingnexplicit `Require` and `Ensure` checks for preconditions and postconditions in Go code.
 
 ## Core Pillars
 
