@@ -18,7 +18,7 @@
 
 | Function | Purpose | Usage |
 | :--- | :--- | :--- |
-| `Require(predicate bool, msg string)` | **Precondition**: Verifies caller-provided input. | Start of function. |
+| `Require(predicate( bool, msg string)` | **Precondition**: Verifies caller-provided input. | Start of function. |
 | `Ensure(predicate bool, msg string)` | **Postcondition**: Verifies function logic/return values. | Before return. |
 
 ---
