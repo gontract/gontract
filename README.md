@@ -24,6 +24,32 @@
 ---
 
 
+## Best Practice
+
+A very natural pattern is to put posconditions into a defer statement like so:
+
+```go
+
+func myfunc(args...) {
+
+// postcondition(s):
+defer func() {
+
+Ensure(..)
+..Ensure(..)
+
+}()
+
+
+// precondtions:
+Require(..)
+...
+Require(..)
+...
+//implementation
+...
+
+```
 
 
 
